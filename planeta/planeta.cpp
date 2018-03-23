@@ -1,11 +1,28 @@
 #include "planeta.hpp"
+#include <iostream>
+#include <typeinfo>
+#include "err.hpp"
+
+int Planeta::ile = 0;
 
 Planeta::Planeta(std::vector<Kontynent> kontynenty) : kontynenty(kontynenty) {
-    std::cout << "k: " << typeid(*this).name() << std::endl;
-    // Planeta::ile++;
+    ++Planeta::ile;
+
+    if (debug) {
+        std::cout << "constructor: " << typeid(*this).name() << " " <<
+            Planeta::ile << std::endl;
+    }
 }
 
 Planeta::~Planeta() {
-    std::cout << "d: " << typeid(*this).name() << std::endl;
-    // Planeta::ile--;
+    --Planeta::ile;
+
+    if (debug) {
+        std::cout << "constructor: " << typeid(*this).name() << " " <<
+            Planeta::ile << std::endl;
+    }
+}
+
+int Planeta::get_ile() {
+    return Planeta::ile;
 }
